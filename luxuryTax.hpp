@@ -10,9 +10,9 @@ class luxuryTax{
     int getPrice();
     void setPrice();
     void calculate();
-    
+
     private:
-    double priceofobject;
+    double PriceOfObject;
 
 
 };
