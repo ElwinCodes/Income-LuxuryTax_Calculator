@@ -21,7 +21,8 @@ int main (){
             case 1:
             //call function Income Tax
             initialT.input();
-            initialT.calculate();
+            initialT.federalTax();
+            initialT.provincialTax();
             initialT.output();
             break;
 
