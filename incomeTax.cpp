@@ -2,7 +2,7 @@
 #include "incomeTax.hpp"
 using namespace std;
 
-
+//contructor functions to initialize variables 
 incomeTax::incomeTax(double new_income, double FT1, double FT2, double FT3, double FT4, double PT1, double PT2, double PT3, double PT4, double PT5, double PT6, double PT7, double TotalF, double TotalP){
     income = new_income;
     //Federal Tax bracket
@@ -22,6 +22,7 @@ incomeTax::incomeTax(double new_income, double FT1, double FT2, double FT3, doub
     P7 = PT7;
 }
 
+//Default constructor function
 incomeTax::incomeTax(){
     income = 0;
     F1 = 0;
@@ -40,6 +41,7 @@ incomeTax::incomeTax(){
 
 }
 
+//refresh function to set all variables equal to zero
 void incomeTax::refresh(){
     income = 0;
     F1 = 0;
@@ -57,28 +59,28 @@ void incomeTax::refresh(){
     totalP = 0;
 }
 
+//getter function to return income
 int incomeTax::getIncome(){
     return income;
 }
 
+//setter function to set income
 void incomeTax::setIncome(double setIncome){
     income = setIncome;
 
 }
-
+//input function to take input from user and set equal to income
 void incomeTax::input(){
     cout << "Please enter in your personal income" << endl;
     cin >> income;
     
 }
+//output function to print out cost of taxes and final after tax income
 void incomeTax::output(){
     cout << "Your income before taxes is: "<< income<< "\nFederal Taxes: " << totalF << "\nProvincial Taxes: " << totalP << "\nYour final income is " << income-totalP-totalF << endl;
 }
-void incomeTax::calculate(){
-    cout.precision(10);
-    cout << "your personal income is " << income << endl;
-}
 
+//calculates the federal tax depending on tax bracket 
 void incomeTax::federalTax(){
 
     if(income >= 0 && income <= 49020){
@@ -93,11 +95,14 @@ void incomeTax::federalTax(){
     if (income >151978 && income <= 216511){
         F4 = ((income - 151978) * 0.33) + (49020 * 0.15)+(49020 * 0.2050)+(82060 *0.26);
     }
+    //adds all the tax brackets up 
 
     totalF = F1+F2+F3+F4;
     cout << "Total federal Tax contributions are: " << totalF << endl;
 
 }
+
+//calculates the provincial tax depending on tax bracket 
 
 void incomeTax::provincialTax(){
     if (income >= 0 && income <= 42184){
@@ -122,6 +127,7 @@ void incomeTax::provincialTax(){
         P7 = ((income - 222420) * 0.2050)+(62936*0.1680)+(41859*0.1470)+ (12496 * 0.1050)+(42184*0.0770)+(42184*0.0506);
     }
 
+    //adds all the tax brackets up 
     totalP = P1+P2+P3+P4+P5+P6+P7;
 
     cout << "Total Provincial Tax contributions are: " << totalP << endl;
