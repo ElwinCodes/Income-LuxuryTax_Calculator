@@ -20,6 +20,7 @@ int main (){
         switch(input){
             case 1:
             //call function Income Tax
+            initialT.refresh();
             initialT.input();
             initialT.federalTax();
             initialT.provincialTax();

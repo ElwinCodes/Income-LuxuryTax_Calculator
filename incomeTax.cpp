@@ -40,6 +40,23 @@ incomeTax::incomeTax(){
 
 }
 
+void incomeTax::refresh(){
+    income = 0;
+    F1 = 0;
+    F2 = 0;
+    F3 = 0;
+    F4 = 0;
+    P1 = 0;
+    P2 = 0;
+    P3 = 0;
+    P4 = 0;
+    P5 = 0;
+    P6 = 0;
+    P7 = 0;
+    totalF = 0;
+    totalP = 0;
+}
+
 int incomeTax::getIncome(){
     return income;
 }
@@ -68,13 +85,13 @@ void incomeTax::federalTax(){
         F1 = income * 0.15;
     } 
     if ( income > 49020 && income <= 98040){
-        F2 = (income - 49020) * 0.2050;
+        F2 = ((income - 49020) * 0.2050) + (49020 * 0.15);
     } 
     if ( income > 98040 && income <= 151978){
-        F3 = (income-98040) * 0.26;
+        F3 = ((income-98040) * 0.26) + (49020 * 0.15)+(49020 * 0.2050);
     } 
     if (income >151978 && income <= 216511){
-        F4 = (income - 151978) * 0.33;
+        F4 = ((income - 151978) * 0.33) + (49020 * 0.15)+(49020 * 0.2050)+(82060 *0.26);
     }
 
     totalF = F1+F2+F3+F4;
@@ -83,26 +100,26 @@ void incomeTax::federalTax(){
 }
 
 void incomeTax::provincialTax(){
-    if (income >= 0 || income <= 42184){
+    if (income >= 0 && income <= 42184){
         P1 = income * 0.0506;
     } 
-    if (income >= 42185 || income <= 84369){
-        P2 = (income - 42184) * 0.0770;
+    if (income >= 42185 && income <= 84369){
+        P2 = ((income - 42184) * 0.0770)+(42184*0.0506);
     } 
-    if (income >= 84370 || income <= 96866){
-        P3 = (income - 84370) * 0.1050;
+    if (income >= 84370 && income <= 96866){
+        P3 = ((income - 84370) * 0.1050)+(42184*0.0770)+(42184*0.0506);
     } 
-    if (income >= 96867 || income <= 117623){
-        P4 = (income - 96867) * 0.1229;
+    if (income >= 96867 && income <= 117623){
+        P4 = ((income - 96867) * 0.1229)+ (12496 * 0.1050)+(42184*0.0770)+(42184*0.0506) ;
     } 
-    if (income >= 117624 || income <= 159483){
-        P5 = (income - 117623) * 0.1470;
+    if (income >= 117624 && income <= 159483){
+        P5 = ((income - 117623) * 0.1470)+(20756*0.1229)+ (12496 * 0.1050)+(42184*0.0770)+(42184*0.0506);
     } 
-    if (income >= 159484 || income <= 222420){
-        P6 = (income - 159483) * 0.1680;
+    if (income >= 159484 && income <= 222420){
+        P6 = ((income - 159483) * 0.1680) + (41859*0.1470)+ (12496 * 0.1050)+(42184*0.0770)+(42184*0.0506);
     } 
     if ( income > 222420) {
-        P7 = (income - 222420) * 0.2050;
+        P7 = ((income - 222420) * 0.2050)+(62936*0.1680)+(41859*0.1470)+ (12496 * 0.1050)+(42184*0.0770)+(42184*0.0506);
     }
 
     totalP = P1+P2+P3+P4+P5+P6+P7;

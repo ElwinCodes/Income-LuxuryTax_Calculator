@@ -13,6 +13,7 @@ class incomeTax{
     void calculate();
     void federalTax();
     void provincialTax();
+    void refresh();
 
     private:
     double income;
