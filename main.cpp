@@ -13,7 +13,7 @@ int main (){
     cout << "Hello and welcome to the Income and Luxury Tax Calculator" << endl;
     while (true){
         cout << "\nPlease choose what you would like to calculate today!" << endl;
-        cout << "1. Income Tax \n" << "2. Luxury Tax " << endl;
+        cout << "1. Income Tax \n" << "2. Luxury Tax\n " << "0 To Exit" << endl;
 
         cin >> input;
 
@@ -33,6 +33,11 @@ int main (){
             initialL.output();
             // Call function Luxury Tax
             break;
+
+            case 0:
+            cout << "\nThank you for using this calculator! " << endl;
+            cout << "\nExiting Program... \n" << endl;
+            exit(1);
 
             default:
             cout << "You have entered an invalid input" << endl;
